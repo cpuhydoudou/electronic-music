@@ -1,3 +1,4 @@
+import ADSRLab from "@/components/ADSRLab";
 import BeatLab from "@/components/BeatLab";
 import Glossary from "@/components/Glossary";
 import WaveLab from "@/components/WaveLab";
@@ -9,8 +10,10 @@ const SectionTitle = ({ kicker, title, text }: { kicker: string; title: string; 
 
 export default function Home() {
   return (
-    <main>
-      <nav className="nav shell">
+    <>
+      <a className="skip-link" href="#main-content">跳到主要内容</a>
+    <main id="main-content">
+      <nav className="nav shell" aria-label="主要导航">
         <a className="brand" href="#top" aria-label="声波档案馆首页"><i>◉</i><span>声波档案馆<small>SONIC ARCHIVE</small></span></a>
         <div className="nav-links"><a href="#history">历史</a><a href="#genres">流派</a><a href="#synth">合成器</a><a href="#tempo">节拍</a><a href="#glossary">词典</a></div>
         <a className="nav-cta" href="#wave-lab"><span>●</span> 开始实验</a>
@@ -53,6 +56,8 @@ export default function Home() {
           <article><span>04</span><div className="module-icon amp-icon">◢</div><h3>放大器</h3><small>AMPLIFIER</small><p>控制最终音量<br/>把信号送往扬声器</p></article>
         </div>
         <aside className="signal-note"><b>把它想象成雕塑</b><p>振荡器提供一块石头，滤波器削去多余部分，包络赋予动作，放大器决定它离你多近。</p></aside>
+        <div className="adsr-intro"><span>PATCH NOTE / 03A</span><h3>亲手塑造声音的动作</h3><p>拖动四个参数，观察一颗音符从出现、稳定到消失的完整生命。</p></div>
+        <ADSRLab />
       </section>
 
       <section className="section lab-section" id="wave-lab"><div className="shell">
@@ -72,5 +77,6 @@ export default function Home() {
 
       <footer className="footer shell"><div className="brand"><i>◉</i><span>声波档案馆<small>SONIC ARCHIVE</small></span></div><p>保持好奇，保持聆听。<br/>声音的未来，正在被你创造。</p><a href="#top">回到顶部 ↑</a><small>© 2026 SONIC ARCHIVE · 为每一双好奇的耳朵制作</small></footer>
     </main>
+    </>
   );
 }

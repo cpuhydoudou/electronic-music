@@ -35,9 +35,9 @@ export default function BeatLab() {
   return (
     <div className="beat-lab">
       <div className="tempo-readout"><span>{bpm}</span><small>BPM</small></div>
-      <div className="beat-dots" aria-label="四拍指示器">{[0,1,2,3].map((item) => <i className={playing && beat === item ? "on" : ""} key={item}>{item + 1}</i>)}</div>
+      <div className="beat-dots" aria-label={`四拍指示器，当前第 ${beat + 1} 拍`} role="status" aria-live="polite">{[0,1,2,3].map((item) => <span aria-hidden="true" className={playing && beat === item ? "on" : ""} key={item}>{item + 1}</span>)}</div>
       <label htmlFor="bpm">调整速度</label>
-      <input id="bpm" type="range" min="60" max="180" value={bpm} onChange={(e) => setBpm(Number(e.target.value))} />
+      <input id="bpm" type="range" min="60" max="180" value={bpm} aria-valuetext={`${bpm} BPM`} onChange={(e) => setBpm(Number(e.target.value))} />
       <div className="tempo-labels"><span>60 慢板</span><span>120 舞曲</span><span>180 高速</span></div>
       <button className="beat-button" onClick={() => setPlaying((value) => !value)}>{playing ? "■ 停止节拍" : "▶ 启动节拍器"}</button>
     </div>
